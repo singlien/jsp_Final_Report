@@ -21,7 +21,7 @@
     <!-- Login -->
     <div class="container">
         <div class="loginmodal-container">
-            <h1>Login to Your Account</h1>
+            <h1>Login to Do More</h1>
             <br>
             <form>
                 <div class="ui icon input login-model">
@@ -30,7 +30,7 @@
                 </div>
                 <br>
                 <div class="ui icon input login-model">
-                    <input type="password" placeholder="Password">
+                    <input type="password" name="password" placeholder="Password">
                     <i class="lock icon"></i>
                 </div>
                 <br>
@@ -69,6 +69,23 @@
         );
         return false;
     }
+    //Login
+    $('form').submit( function() {
+        var accountVal = $('input[name=account]').val();
+        var passwordVal = $('input[name=password]').val();
+
+        $.post('valpass.jsp', {
+            acct: accountVal,
+            pass: passwordVal
+        }, function(data) {
+            $('#error_message').removeClass('hidden');
+            $('#error_message').html(data);
+        });
+        return false;
+    }
+    
+
+    );
     </script>
 </body>
 

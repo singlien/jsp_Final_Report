@@ -22,7 +22,7 @@
     <div class="loginmodal-container">
         <h1>Register Your Own Account</h1>
         <br>
-        <form>
+        <form action="newmember.jsp" method="post">
             <h3>Account Information</h3>
             <div id="account" class="ui icon input login-model">
                 <i class="user icon"></i>
@@ -173,7 +173,6 @@
                 } else {
                     $('#account').removeClass('error');
                     $('#error_message').addClass('hidden');
-
                 }
             }
         );
