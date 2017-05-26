@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Login 登入</title>
+    <!-- 最新編譯和最佳化的 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <!-- 選擇性佈景主題 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <!-- medal css -->
+    <link rel="stylesheet" type="text/css" href="../css/login-medel.css">
+</head>
+
+<body style="background-image:url(./image/cod.jpg)">
+    <!-- Leave blank margin for Login -->
+    <header class="leave-blank"></header>
+    <!-- Login -->
+    <div class="container">
+        <div class="loginmodal-container">
+            <h1>Login to Your Account</h1>
+            <br>
+            <form>
+                <div class="ui icon input login-model">
+                    <i class="user icon"></i>
+                    <input type="text" name="account" placeholder="Account" onblur="checkDuplicateAcct()">
+                </div>
+                <br>
+                <div class="ui icon input login-model">
+                    <input type="password" placeholder="Password">
+                    <i class="lock icon"></i>
+                </div>
+                <br>
+                <button type="submit" name="login" class="ui button primary">Login</button>
+                <div class="ui message hidden error" id="error_message">
+                </div>
+            </form>
+            <div id="signup_bk" class="login-help">
+                <a href="register.html">Sign up!</a>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Semantic UI -->
+    <link rel="stylesheet" type="text/css" href="../plugins/semantic-ui/semantic.min.css">
+    <!-- AJAX -->
+    <script type="text/javascript">
+    function checkDuplicateAcct() {
+        var accountVal = $('input[name=account]').val();
+
+        $.get('valdupacct.jsp', {
+                acct: accountVal
+            },
+            function(data) {
+                if (data.includes("ok")) {
+                    $('#error_message').removeClass('hidden');
+                    $('#error_message').html("尚未註冊嗎？" + "<a href='register.html'>" + "點我註冊" + "</a>");
+                    $('#account').addClass('error');
+                    $('#signup_bk').addClass('hidden');
+                } else {
+                    $('#account').removeClass('error');
+                    $('#error_message').addClass('hidden');
+                }
+            }
+        );
+        return false;
+    }
+    </script>
+</body>
+
+</html>
