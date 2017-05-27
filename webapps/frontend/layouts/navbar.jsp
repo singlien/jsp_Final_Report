@@ -29,36 +29,37 @@
                         
                 </li>
                 <li>
-                    <a href="#">購物車</a>
+                    <a href="cart.jsp">購物車</a>
                 </li>
                 <!-- navbar choice dropdown -->
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">遊戲平台<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="portfolio-1-col.html">1 Column Portfolio</a>
+                            <a href="./index.jsp?query=xboxone">XBOX One</a>
                         </li>
                         <li>
-                            <a href="portfolio-2-col.html">2 Column Portfolio</a>
+                            <a href="./index.jsp?query=ps4">PS4</a>
                         </li>
                         <li>
-                            <a href="portfolio-3-col.html">3 Column Portfolio</a>
+                            <a href="./index.jsp?query=psv">PS Vita</a>
                         </li>
                         <li>
-                            <a href="portfolio-4-col.html">4 Column Portfolio</a>
+                            <a href="./index.jsp?query=wii&nbsp;u">Wii U</a>
                         </li>
                         <li>
-                            <a href="portfolio-item.html">Single Portfolio Item</a>
+                            <a href="./index.jsp?query=3ds">3DS</a>
                         </li>
                     </ul>
                 </li>
             </ul>
             <!-- Search bar -->
-            <form class="nav navbar-form navbar-right">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search for games ~" width="30px">
+            <form class="nav navbar-form navbar-right" action="index.jsp" method="get">
+                <div class="ui left icon input">
+                <i class="search icon"></i>
+                    <input type="text" name="query" class="form-control" placeholder="Search for games ~" width="30px">
                 </div>
-                <button type="submit" class="btn btn-default" value="search">Search</button>
+                <button type="submit" class="ui inverted basic button" value="search">Search</button>
             </form>
         </div>
         <!-- /.navbar-collapse -->

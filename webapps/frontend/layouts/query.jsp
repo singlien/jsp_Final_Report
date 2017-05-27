@@ -12,16 +12,16 @@
 	request.setCharacterEncoding("UTF-8");
 	String url = "";
 	String driver = "com.mysql.jdbc.Driver";
-  String query = request.getParameter("query");
+ 	String query = request.getParameter("query");
 	ResultSet rs = null;
-  int rowLimit=3;
-  int rowCount=1;
+  	int rowLimit=3;
+  	int rowCount=1;
 
 	try{
 	 database.connectDB();
      String sql = "select * from productst;"; // Catch every data from 'person'
      if(query!="" && query!=null){
-      sql = "select * from productst where platform='"+query+"' or name='"+query+"';";
+      sql = "select * from productst where `name`='"+query+"' or `products`='"+query+"';"
      }
      database.query(sql);
      rs = database.getRS();
@@ -37,9 +37,7 @@
 %>
   <div class='col-md-4 portfolio-item' id='div_index20'>
     <div class="header-margin"></div>
-    <h2 class="ui header"><%=name%><a class="ui red label"><%=type%></a>
-
-</h2>
+    <h2 class="ui header"><%=name%><a class="ui red label"><%=type%></a></h2>
     <a><img class='img-responsive' src='<%=pict%>'/></a>
     <h3 id='price' class="ui header">Price</h3><h3 class="ui header" style="text-align: right; ">NT$ <%=price%></h3>
     <div class="ui compact selection dropdown" >
@@ -67,10 +65,7 @@
 
       }
     }else{
-      out.print("keyword:");
-      out.print(query);
-      out.print(", No result found!");
-
+      out.print("No result found!");
     }
   
 
@@ -80,4 +75,3 @@
 
 
 %>
-

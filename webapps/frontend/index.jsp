@@ -15,6 +15,8 @@
     <link rel="stylesheet" type="text/css" href="./css/custom-bootstrap.css">
     <!-- 選擇性佈景主題 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <!-- load custom css -->
+    <link rel="stylesheet" type="text/css" href="./css/custom.css">
 </head>
 
 <body>
@@ -58,9 +60,11 @@
         </a>
     </header>
     <!-- End of Header Carousel -->
-
+    <!-- Products -->
     <div class="container">
-        <div id="products"></div>
+    <%String query = request.getParameter("q");%>
+        <jsp:include page="./layouts/products.jsp?query=<%=q%>"/>
+
     </div>
 
     <footer>
@@ -69,14 +73,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- bootstrap JavaScript plugin -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <!-- Semantic UI -->
+    <link rel="stylesheet" type="text/css" href="./plugins/semantic-ui/semantic.min.css">
+    <script type="text/javascript" src="./plugins/semantic-ui/semantic.min.js"></script>
     <!-- Sweetalert -->
-    <script src="venders/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="venders/sweetalert/dist/sweetalert.css">
+    <script src="./plugins/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="plugins/sweetalert/dist/sweetalert.css">
     <!-- Script to Activate the Carousel -->
     <script>
     $('.carousel').carousel({
         interval: 5000 //changes the speed
     })
+    $('.ui.dropdown')
+        .dropdown()
+    ;
     </script>
 </body>
 
