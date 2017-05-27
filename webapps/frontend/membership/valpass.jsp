@@ -31,7 +31,9 @@
           if(account.equals(rs.getString("account"))){      // Find the account then check password
             if(password.equals(rs.getString("password"))){  // Password also equals
               //登入成功
-              response.sendRedirect("../index.jsp");
+              session.setAttribute("login", "ok");
+              session.setAttribute("user", rs.getString("name"));
+              out.println("Success");
               break;
             }
           }

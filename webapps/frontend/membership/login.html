@@ -70,20 +70,24 @@
         return false;
     }
     //Login
-    $('form').submit( function() {
-        var accountVal = $('input[name=account]').val();
-        var passwordVal = $('input[name=password]').val();
+    $('form').submit(function() {
+            var accountVal = $('input[name=account]').val();
+            var passwordVal = $('input[name=password]').val();
 
-        $.post('valpass.jsp', {
-            acct: accountVal,
-            pass: passwordVal
-        }, function(data) {
-            $('#error_message').removeClass('hidden');
-            $('#error_message').html(data);
-        });
-        return false;
-    }
-    
+            $.post('valpass.jsp', {
+                acct: accountVal,
+                pass: passwordVal
+            }, function(data) {
+                if (data.includes("Success")) {
+                    window.open('../index.jsp', '_self');
+                } else {
+                    $('#error_message').removeClass('hidden');
+                    $('#error_message').html(data);
+                }
+            });
+            return false;
+        }
+
 
     );
     </script>

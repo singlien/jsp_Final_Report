@@ -19,7 +19,7 @@
 
 <body>
     <!-- Navigation -->
-    <jsp:include page="./layouts/navbar.html"/>
+    <jsp:include page="./layouts/navbar.jsp"/>
     <!-- Header Carousel -->
     <header id="myCarousel" class="carousel slide">
         <!-- Indicators -->
@@ -58,12 +58,20 @@
         </a>
     </header>
     <!-- End of Header Carousel -->
+
+    <div class="container">
+        <div id="products"></div>
+    </div>
+
     <footer>
     </footer>
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- bootstrap JavaScript plugin -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <!-- Sweetalert -->
+    <script src="venders/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="venders/sweetalert/dist/sweetalert.css">
     <!-- Script to Activate the Carousel -->
     <script>
     $('.carousel').carousel({
