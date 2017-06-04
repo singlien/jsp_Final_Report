@@ -63,6 +63,7 @@
     <!-- Products -->
     <div class="container">
      <%
+     String query =request.getParameter("query");
      %>
         <jsp:include page="./layouts/products.jsp?query=<%=query%>"/>
 
