@@ -34,14 +34,14 @@ public class Database{
   }
   public void insertData(String account,String password,String name,String gender,String birth,String email){
     try{
-      String sql = "insert into FPpersonal(account,password,name,gender,birth,email) value(?,?,?,?,?,?)";
+      String sql = "INSERT INTO `FPpersonal` (`name`, `email`, `gender`,`password`, `account`, `birth`) VALUES (?, ?, ?, ?, ?, ?);";
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1,account);
-        ps.setString(2,password);
-        ps.setString(3,name);
-        ps.setString(4,gender);
-        ps.setString(5,birth);
-        ps.setString(6,email);
+        ps.setString(1,name);
+        ps.setString(2,email);
+        ps.setString(3,gender);
+        ps.setString(4,password);
+        ps.setString(5,account);
+        ps.setString(6,birth);
         int a = ps.executeUpdate();
     }catch(Exception ex){
       System.out.println(ex);

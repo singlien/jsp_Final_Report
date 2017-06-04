@@ -3,5 +3,6 @@
  request.setCharacterEncoding("UTF-8");
   session.removeAttribute("login");
   session.removeAttribute("user");
+  session.removeAttribute("id");
   response.sendRedirect("../index.jsp");
   %>

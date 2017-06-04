@@ -11,7 +11,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.jsp">HomePage</a>
+            <a class="navbar-brand" href="./index.jsp">HomePage</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -29,7 +29,7 @@
                         
                 </li>
                 <li>
-                    <a href="cart.jsp">購物車</a>
+                    <a href="./cart.jsp">購物車</a>
                 </li>
                 <!-- navbar choice dropdown -->
                 <li class="dropdown">

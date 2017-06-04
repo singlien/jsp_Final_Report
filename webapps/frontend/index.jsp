@@ -62,8 +62,9 @@
     <!-- End of Header Carousel -->
     <!-- Products -->
     <div class="container">
-    <%String query = request.getParameter("q");%>
-        <jsp:include page="./layouts/products.jsp?query=<%=q%>"/>
+     <%
+     %>
+        <jsp:include page="./layouts/products.jsp?query=<%=query%>"/>
 
     </div>
 
