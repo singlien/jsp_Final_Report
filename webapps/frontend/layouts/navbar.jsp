@@ -45,7 +45,7 @@
                             <a href="./index.jsp?query=psv">PS Vita</a>
                         </li>
                         <li>
-                            <a href="./index.jsp?query=wii&nbsp;u">Wii U</a>
+                            <a href="./index.jsp?query=wiiu">Wii U</a>
                         </li>
                         <li>
                             <a href="./index.jsp?query=3ds">3DS</a>

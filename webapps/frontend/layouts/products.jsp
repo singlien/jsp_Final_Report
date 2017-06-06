@@ -46,7 +46,7 @@
 </h2>
     <a href="<%=video%>"><img class='img-responsive' src='<%=pict%>'/></a>
     <h3 id='price' class="ui header">Price</h3><h3 class="ui header" style="text-align: right; ">NT$ <%=price%></h3>   
-    	<form action="#" >	
+    	<form action="javascript:void(0);">	
     	<input type="hidden" value='<%=id%>'> 	
         <select class="ui compact selection dropdown">
     		  <option value="1">1</option>
@@ -113,9 +113,5 @@ else{
 <%
 }
 %>
-
-
-
-
 </script>
 
