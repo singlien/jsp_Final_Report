@@ -12,18 +12,19 @@
 	request.setCharacterEncoding("UTF-8");
 	String url = "";
 	String driver = "com.mysql.jdbc.Driver";
-  String query = request.getParameter("query");
+  String query = request.getParameter("q");
   int pcount  = 0;
 	ResultSet rs = null;
   int rowLimit=3;
   int rowCount=1;
 
 	try{
-	 database.connectDB();
+	   database.connectDB();
      String sql = "select * from FPinventory;"; // Catch every data from 'person'
      if(query!="" && query!=null){
       sql = "select * from FPinventory where platform='"+query+"' or name like '%"+query+"%';";
      }
+     out.print(sql);
      database.query(sql);
      rs = database.getRS();
      if(rs!=null){	//Start loading data
