@@ -15,36 +15,27 @@
 
     if(session.getAttribute("login")=="ok"){
 
-      String buyer_id = null;
-      String prod_id = null;
-      String prod_num = null;
-
-      buyer_id = session.getAttribute("id").toString();
-      prod_id = request.getParameter("pid");
-  	  prod_num = request.getParameter("pnum");
+      String ord_id = request.getParameter("oid");
 
       try{
 
-          if(buyer_id!=null && prod_id!=null && prod_num!=null){  
+          if(ord_id!=null){  
 
             database.connectDB();
-            String sql = "INSERT INTO `FPorder` (`person_id`, `product_id`, `order_num`, `last_update`) VALUES ("+buyer_id+","+prod_id+","+prod_num+", NOW());";
+            String sql = "delete from `FPorder` where order_id="+ord_id+";";
 
             database.insert(sql);
-            out.println("已將商品加入購物車！");
+            out.println("已將商品從購物車移除");
           
           }else{
           out.println("失敗");
-          out.println("buyer:"+buyer_id);
-          out.println("product:"+prod_id);
-          out.println("number:"+prod_num);
+          out.println("product:"+ord_id);
           }
         }catch(Exception ex){
            out.print(ex);
         }
-
-}else{
-	out.print("Please login");
-}
+  }else{
+  	out.print("Please login");
+  }
 
 %>

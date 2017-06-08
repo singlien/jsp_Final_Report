@@ -78,6 +78,7 @@
                 acct: accountVal,
                 pass: passwordVal
             }, function(data) {
+
                 if (data.includes("Success")) {
                     window.open('../index.jsp', '_self');
                 } else {

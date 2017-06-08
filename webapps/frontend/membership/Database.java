@@ -25,6 +25,11 @@ public class Database{
       System.out.println(ex);
     }
   }
+  public void closeDB(){
+    con.close();
+    stmt.close();
+    rs = null;
+  }
   public void query(String sql){
     try{
       rs = stmt.executeQuery(sql);
@@ -43,6 +48,16 @@ public class Database{
         ps.setString(5,account);
         ps.setString(6,birth);
         int a = ps.executeUpdate();
+        System.out.println("Success!, "+sql);
+    }catch(Exception ex){
+      System.out.println(ex);
+    }
+  }
+  public void insertData(String sql){
+    try{
+        PreparedStatement ps = con.prepareStatement(sql);
+        int a = ps.executeUpdate();
+        System.out.println("Success!, "+sql);
     }catch(Exception ex){
       System.out.println(ex);
     }

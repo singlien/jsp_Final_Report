@@ -24,18 +24,13 @@ if(session.getAttribute("login")!="ok"){
     //userdata
     String uid = session.getAttribute("id").toString();
     try{
+
      database.connectDB();
-     String sql = "SELECT inv.name, inv.price, inv.picture, ord.`order_num` from `FPorder` as ord, `FPpersonal` as per, `FPinventory` as inv where per.`id` = ord.`person_id` and inv.id = ord.`product_id` and ord.`person_id`='"+uid+"';"; 
+     String sql = "SELECT ord.order_id, inv.name, inv.price, inv.picture, ord.`order_num` FROM `FPorder` as ord, `FPpersonal` as per, `FPinventory` as inv where per.`id` = ord.`person_id` and inv.id = ord.`product_id` and ord.`person_id`='"+uid+"';"; 
      database.query(sql);
      rs = database.getRS();
 
      if(rs!=null){  //Start loading data
-      while(rs.next()){
-      count++;
-      String name = rs.getString("name");
-      String price = rs.getString("price");
-      String pict = rs.getString("picture");
-      String pnum = rs.getString("order_num");
         
 %>
 
@@ -70,19 +65,32 @@ if(session.getAttribute("login")!="ok"){
                 <th>購買數量</th>
                 <th>刪除</th>
             </tr>
-
+<%
+      while(rs.next()){
+      count++;
+      String name = rs.getString("name");
+      String price = rs.getString("price");
+      String pict = rs.getString("picture");
+      String pnum = rs.getString("order_num");
+      String id = rs.getString("order_id");
+%>
             <tr>
                 <td><%=count%></td>
                 <td><a><%=name%></a></td>
                 <td><%=pnum%></td>
-                <td>  <button class="ui icon button">
-                      <i class="remove icon"></i></button>
+                <td>  
+                <form action="">
+                  <input type="hidden" value='<%=id%>'>  
+                  <button class="ui icon button" onclick="RemoveCart(this.form)">
+                        <i class="remove icon"></i></button>
+                </form>
+
                 </td>
             </tr>
+            <%}%>
         </table>
-        <button type="button" class="btn btn-primary">Purchase</button>
+          <button type="button" class="btn btn-primary">Purchase</button>
     </div>
-
 
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -91,15 +99,31 @@ if(session.getAttribute("login")!="ok"){
     <!-- Semantic UI -->
     <link rel="stylesheet" type="text/css" href="./plugins/semantic-ui/semantic.min.css">
     <script type="text/javascript" src="./plugins/semantic-ui/semantic.min.js"></script>
+    
+    <!-- remove from cart -->
+    <script type="text/javascript">
+    function RemoveCart(Tform){
+       var orderid = Tform[0].value;
+       //console.log(orderid);
+
+        $.get('carts/removefromcart.jsp', {
+                    oid: orderid,
+                },
+                function(data){
+                    console.log(data);
+                }
+            );
+      }
+    </script>
+
 </body>
 
 </html>
 
 
 <%
-}}}catch(Exception ex){
+}}catch(Exception ex){
     out.print(ex);
 }
 }
-
 %>

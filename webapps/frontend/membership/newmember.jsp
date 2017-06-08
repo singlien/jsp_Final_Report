@@ -39,6 +39,7 @@
          message="註冊失敗";
        }else{     // If account doesn't exist, write a new account into database
          database.insertData(account,password,name,gender,birth,email);
+
          message="註冊成功";
          }
        }
@@ -75,6 +76,12 @@
     <div class="container">
         <div class="loginmodal-container">
             <h1><%=message%></h1>
+            <p>Account:<%=account%></p>
+            <p>Password:<%=password%></p>
+            <p>Name:<%=name%></p>
+            <p>Sex:<%=gender%></p>
+            <p>BDay:<%=birth%></p>
+            <p>Email:<%=email%></p>
             <br>
             <button class="ui button primary" onclick="window.open('login.html', '_self');">返回登入頁面</button>
         </div>

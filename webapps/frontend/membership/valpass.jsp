@@ -34,7 +34,7 @@
               session.setAttribute("login", "ok");
               session.setAttribute("user", rs.getString("name"));
               session.setAttribute("id", rs.getString("id"));
-              out.println("Success");
+              out.println("Success");             
               break;
             }
           }

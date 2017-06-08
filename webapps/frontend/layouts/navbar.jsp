@@ -57,7 +57,8 @@
             <form class="nav navbar-form navbar-right" action="index.jsp" method="get">
                 <div class="ui left icon input">
                 <i class="search icon"></i>
-                    <input type="text" name="query" class="form-control" placeholder="Search for games ~" width="30px">
+                <input type="text" name="search" class="form-control" placeholder="Search for games ~" width="30px">
+                <input type="hidden" name="page" value="products">
                 </div>
                 <button type="submit" class="ui inverted basic button" value="search">Search</button>
             </form>

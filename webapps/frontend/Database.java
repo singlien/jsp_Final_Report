@@ -25,6 +25,15 @@ public class Database{
       System.out.println(ex);
     }
   }
+  public void closeDB(){
+    try{
+      rs = null;
+      stmt.close();
+      con.close();
+    }catch(Exception ex){
+      System.out.println(ex);
+    }
+  }
   public void query(String sql){
     try{
       rs = stmt.executeQuery(sql);
@@ -32,21 +41,32 @@ public class Database{
       System.out.println(ex);
     }
   }
-  public void insertData(String account,String password,String name,String birth,String email,String phone){
+  public void insertData(String account,String password,String name,String gender,String birth,String email){
     try{
-      String sql = "insert into person(account,password,name,birth,email,phone) value(?,?,?,?,?,?)";
-      PreparedStatement ps = con.prepareStatement(sql);
-      ps.setString(1,account);
-      ps.setString(2,password);
-      ps.setString(3,name);
-      ps.setString(4,birth);
-      ps.setString(5,email);
-      ps.setString(6,phone);
-      int a = ps.executeUpdate();
+      String sql = "INSERT INTO `FPpersonal` (`name`, `email`, `gender`,`password`, `account`, `birth`, `last-update`) VALUES (?, ?, ?, ?, ?, ?, NOW());";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1,name);
+        ps.setString(2,email);
+        ps.setString(3,gender);
+        ps.setString(4,password);
+        ps.setString(5,account);
+        ps.setString(6,birth);
+        int a = ps.executeUpdate();
+        System.out.println("Success!, "+sql);
     }catch(Exception ex){
       System.out.println(ex);
     }
   }
+  
+  public void insert(String sql){
+    try{
+      int i = stmt.executeUpdate(sql);
+      System.out.println("insert result:"+i);
+    }catch(Exception ex){
+      System.out.println(ex);
+    }
+  }
+
   public Connection getCon(){
     return con;
   }
