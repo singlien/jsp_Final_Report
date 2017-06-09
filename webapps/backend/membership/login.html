@@ -34,7 +34,7 @@
                     <i class="lock icon"></i>
                 </div>
                 <br>
-                <button type="submit" name="login" class="ui button primary">Login</button>
+                <button type="submit" id="login_btn" name="login" class="ui button primary">Login</button>
                 <div class="ui message hidden error" id="error_message">
                 </div>
             </form>
@@ -73,7 +73,9 @@
     $('form').submit(function() {
             var accountVal = $('input[name=account]').val();
             var passwordVal = $('input[name=password]').val();
-
+            // let button show loading
+            $('#login_btn').addClass('loading');
+            // ajax
             $.post('valpass.jsp', {
                 acct: accountVal,
                 pass: passwordVal

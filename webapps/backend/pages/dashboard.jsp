@@ -145,11 +145,12 @@
                           <th>遊戲平台</th>
                           <th>售出總數量</th>
                           <th>售出總金額</th>
+                          <th>剩餘庫存</th>
                           <th>控制按鈕</th>
                       </tr>
 <%
        //Get inventory list
-       sql = "select inv.id, inv.name, inv.`platform`, inv.price, sum(ord.order_num) from `FPinventory` as inv left join `FPorder` as ord on inv.`id`=ord.`product_id` group by inv.`id` order by sum(ord.order_num) desc;";
+       sql = "select inv.id, inv.name, inv.`platform`, inv.price, sum(ord.order_num),inv.inventory from `FPinventory` as inv left join `FPorder` as ord on inv.`id`=ord.`product_id` group by inv.`id` order by sum(ord.order_num) desc;";
        database.query(sql);
        rs = database.getRS();
        if(rs!=null){
@@ -160,17 +161,20 @@
           oamount = rs.getInt("sum(ord.order_num)");
           int price = rs.getInt("price");
           totalSales = (oamount*price) +"";
+          int inv = rs.getInt("inventory");
+          String invleft = (inv-oamount)+"";
 %>
                       <tr>
-                          <td class="left aligned"><%=pname%></td>
-                          <td class="left aligned"><%=pplatform%></td>
-                          <td class="left aligned"><%=oamount%></td>
-                          <td class="left aligned"><%=totalSales%></td>
+                          <td class="left aligned"><h3><%=pname%></h3></td>
+                          <td class="left aligned"><h3><%=pplatform%></h3></td>
+                          <td class="left aligned"><h3><%=oamount%></h3></td>
+                          <td class="left aligned"><h3><%=totalSales%></h3></td>
+                          <td class="left aligned"><h3><%=invleft%></h3></td>
                           <td class="left aligned">
                           <form action="javascript:void(0);">
                             <input type="hidden" name="id" value="<%=id%>">
-                            <button type="button" class="ui icon button" data-tooltip="Edit product">
-                            <i class="configure icon"></i>
+                            <button type="button" class="ui icon button" data-tooltip="Edit product" onclick="EditRedirect(this.form)">
+                            <i class="edit icon"></i>
                             </button>
                             <button class="ui red icon button" data-tooltip="Remove product" onclick="RemoveConfirm(this.form);">
                             <i class="remove icon"></i>
@@ -205,6 +209,15 @@
 %>
 
 <script type="text/javascript">
+
+
+  function EditRedirect(Tform){
+      var productid = Tform[0].value;
+      console.log(productid);
+      var url="./edit.jsp?pid="+productid;
+      window.open(url,"_self");
+
+  }
   function RemoveConfirm(Tform){
         console.log(Tform);
 

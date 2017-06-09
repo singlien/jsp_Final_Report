@@ -110,7 +110,8 @@ if(queryid!=null && queryid!=""){//edit
 <%
 if(name!=null){
 %>
-            <form class="ui form">
+            <form class="ui form" action="./pages/updateinventory.jsp" method="post">
+                <input type="hidden" name="pid" value="<%=queryid%>">
                 <h1 class="ui dividing aligned center header">
                   修改資料
                 </h1>
@@ -163,10 +164,12 @@ if(name!=null){
                     <input type="submit" class="ui right floated green button" value="儲存">
                     <input type="reset" class="ui right floated red button" value="清除">
             </form>
+            <button class="ui black button" onclick="window.history.back();">取消</button>
 <%
 }else{
 %>
-            <form class="ui form">
+            <form class="ui form" action="./pages/updateinventory.jsp" method="post">
+                <input type="hidden" name="pid" value="0">
                 <h1 class="ui dividing aligned center header">
                   新增資料
                 </h1>

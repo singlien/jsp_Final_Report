@@ -67,6 +67,46 @@ public class Database{
     }
   }
 
+  public void updateInventory(){
+
+  }
+  public void insertInventory(int pid,String name, String platform, String price, String date, String picture, String video, String inventory){
+    int a=-1;
+    try{
+
+        if(pid==0){
+          //insert
+          String sql = "INSERT INTO `FPinventory` (`name`, `platform`, `price`, `date`, `picture`, `video`, `inventory`) VALUES (?, ?, ?, ?, ?, ?, ?);";
+          PreparedStatement ps = con.prepareStatement(sql);
+          ps.setString(1,name);
+          ps.setString(2,platform);
+          ps.setString(3,price);
+          ps.setString(4,date);
+          ps.setString(5,picture);
+          ps.setString(6,video);
+          ps.setString(7,inventory);
+          a = ps.executeUpdate();
+          System.out.println("Insert Success!, "+a);
+        }else{
+          //update
+          String sql="update `FPinventory` set name=?, platform=?, price=?, date=?, picture=?, video=?, inventory=? where id = ?;";
+          PreparedStatement ps = con.prepareStatement(sql);
+          ps.setString(1,name);
+          ps.setString(2,platform);
+          ps.setString(3,price);
+          ps.setString(4,date);
+          ps.setString(5,picture);
+          ps.setString(6,video);
+          ps.setString(7,inventory);
+          ps.setInt(8,pid);
+          a = ps.executeUpdate();
+          System.out.println("Update Success!, "+a);
+        }
+    }catch(Exception ex){
+      System.out.println(ex);
+    }
+  }
+
   public Connection getCon(){
     return con;
   }
