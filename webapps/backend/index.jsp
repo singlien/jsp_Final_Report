@@ -47,7 +47,7 @@ if(!(session.getAttribute("login")=="ok")){
     <link href="css/simple-sidebar.css" rel="stylesheet">
     <div id="wrapper">
         <div id="sidebar-wrapper">
-            <jsp:include page="./layouts/sidebar.html"/>
+            <jsp:include page="./layouts/sidebar.jsp"/>
         </div>
     </div>
 
