@@ -79,7 +79,7 @@ if(session.getAttribute("login")!="ok"){
                 <td><a><%=name%></a></td>
                 <td><%=pnum%></td>
                 <td>  
-                <form action="">
+                <form action="javascript:void(0);">
                   <input type="hidden" value='<%=id%>'>  
                   <button class="ui icon button" onclick="RemoveCart(this.form)">
                         <i class="remove icon"></i></button>
@@ -99,20 +99,40 @@ if(session.getAttribute("login")!="ok"){
     <!-- Semantic UI -->
     <link rel="stylesheet" type="text/css" href="./plugins/semantic-ui/semantic.min.css">
     <script type="text/javascript" src="./plugins/semantic-ui/semantic.min.js"></script>
+    <!-- Sweetalert -->
+    <script src="./plugins/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="plugins/sweetalert/dist/sweetalert.css">
     
     <!-- remove from cart -->
     <script type="text/javascript">
     function RemoveCart(Tform){
        var orderid = Tform[0].value;
        //console.log(orderid);
-
-        $.get('carts/removefromcart.jsp', {
-                    oid: orderid,
-                },
-                function(data){
-                    console.log(data);
-                }
-            );
+       swal({
+          title: "Are you sure?",
+          text: "You will not be able to recover purchase!",  
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "Yes, delete it!",
+          closeOnConfirm: false 
+       },
+      function(){
+          $.get('carts/removefromcart.jsp', {
+            oid: orderid,
+          },
+            function(data){
+              console.log(data);
+            }
+          );
+         swal({
+            title: "Deleted!",
+            text: "Purchase has been removed from cart",
+            type: "success",
+            closeOnConfirm: false
+          },
+          function(){location.reload()});
+          });
       }
     </script>
 
@@ -126,4 +146,6 @@ if(session.getAttribute("login")!="ok"){
     out.print(ex);
 }
 }
+
+database.closeDB();
 %>

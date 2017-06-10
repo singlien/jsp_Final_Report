@@ -49,5 +49,5 @@
    {
     out.println("帳號不能為空！");
    }
-
+database.closeDB();
 %>

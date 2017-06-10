@@ -19,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="./css/custom.css">
 </head>
 
-<body>
+<body style="background-image:url(./images/bg.jpg)">
     <!-- Navigation -->
     <jsp:include page="./layouts/navbar.jsp"/>
     <!-- Header Carousel -->
@@ -33,22 +33,24 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
-                <image class="fill center-block" src="./images/1.png"></image>
+                <image class="fill center-block" src="./images/summer.jpg"></image>
                 <div class="carousel-caption">
-                    <h2>Top Hit this week</h2>
+                    <h3><a class="ui red label" href="https://www.youtube.com/watch?v=jG1WbkJgOFs">本週主打<p>夏日課程：宮本光</p></a></h3>
                 </div>
             </div>
             <div class="item">
-                <image class="fill center-block" src="./images/2.png"></image>
+                <image class="fill center-block" src="./images/zelda.jpg"></image>
                 <div class="carousel-caption">
-                    <h2>Caption 2</h2>
+                    <a class="ui blue label" href="https://www.youtube.com/watch?v=EysF5B2wDkw">Wii U 經典<p>薩爾達傳說：荒野之息</p></a>
+
                 </div>
             </div>
             <div class="item">
-                <image class="fill center-block" src="./images/3.png"></image>
                 <div class="carousel-caption">
-                    <h2>Caption 3</h2>
+                    <a class="ui green label" href="https://www.youtube.com/watch?v=Vt-Hb8_e6N0">PS4必玩<p>火線獵殺：野境</p></a>
                 </div>
+                <image class="fill center-block" src="./images/ghost.jpg"></image>
+                
             </div>
         </div>
         <!-- Controls -->

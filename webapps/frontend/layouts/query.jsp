@@ -73,5 +73,5 @@
 	out.println(e);
 }
 
-
+database.closeDB();
 %>

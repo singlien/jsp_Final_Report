@@ -42,9 +42,7 @@
 %>
   <div class='col-sm-4 portfolio-item' id='div_index20'>
     <div class="header-margin"></div>
-    <h2 class="ui header"><%=name%><a class="ui red label"><%=type%></a>
-
-</h2>
+    <h2 class="ui header"><%=name%><a class="ui red label"><%=type%></a></h2>
     <a href="<%=video%>"><img class='img-responsive' src='<%=pict%>'/></a>
     <h3 class="ui header" >NT$ <%=price%></h3>   
     	<form action="javascript:void(0);">	
@@ -98,7 +96,7 @@ if(session.getAttribute("login")=="ok"){
                 pnum: purchasenum
             },
             function(data){
-                swal("Add to cart!", data, "success");
+                swal("Add to cart!", "Product has been added into your cart.", "success");
             }
         );
 		return null;	
@@ -109,10 +107,21 @@ else{
 %>
 	function AddToCart(){
 		//not logged in
-		swal("Error!", "Please login first to add things to cart.", "error");
+		swal({
+      title: "Error!",
+      text: "Please login first before adding things to cart.",
+      type: "error"
+    },
+    function(){
+      window.open("./membership/login.html","_self");
+    });
+
 	}
 <%
 }
 %>
 </script>
 
+<%
+database.closeDB();
+%>

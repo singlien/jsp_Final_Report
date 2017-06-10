@@ -47,5 +47,5 @@
     message="帳號不可為空白";
     out.println(message);
    }
-
+database.closeDB();
 %>

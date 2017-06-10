@@ -95,5 +95,7 @@
 
 </html>
 
-
+<%
+database.closeDB();
+%>
 
