@@ -1,9 +1,3 @@
-# jsp_Final_Report
-
-*修復問題*<br>
-     1.放到azure後沒辦法讀取學校的資料庫(修復)<br>
-     2.放到azure後亂碼問題(解：將.html轉成.JSP)<br>
-
 ***系統描述文件***
 
 組別編號：<br>
@@ -26,7 +20,7 @@
 
      本網站使用Microsoft Azure作為雲端平台，整合Microsoft Azure雲端服務、JSP、HTML5、CSS3、jQuery、JavaScript等技術，是具有簡潔便利,有系統的雲端解決方案，使用技術與架構如下：
 
-     1.資料來源層：MySQL Database、即Microsoft Azure的雲端資料庫。
+   1.資料來源層：MySQL Database、即Microsoft Azure的雲端資料庫。
 
      2.商務邏輯層：雲端網站使用Microsoft Azure Website；伺服器技術採用JSP,資料庫存取技術使用JDBC連線, 網路服務使用RestfulAPI，以JSON格式進行資料存取。網站後台可以各大遊戲平台資料開放平台－遊戲基本販售資訊、遊戲資料集以及內容展示，以便讓用戶端進行資料查詢和選購,也提供討論平台進行討論與分享。
 
