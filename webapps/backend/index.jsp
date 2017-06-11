@@ -25,7 +25,7 @@ if(!(session.getAttribute("login")=="ok")){
     <!-- load custom css -->
     <!-- <link rel="stylesheet" type="text/css" href="./css/custom.css"> -->
 
-    
+
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- bootstrap JavaScript plugin -->
@@ -76,7 +76,7 @@ if(!(session.getAttribute("login")=="ok")){
                 <jsp:include page="pages/member.jsp"/>
             <%
             break;
-            
+
             case "products":
                 out.print("products");
             %>
@@ -105,8 +105,8 @@ if(!(session.getAttribute("login")=="ok")){
                 <jsp:include page="pages/dashboard.jsp"/>
             <%
             break;
-            }  
-        }  
+            }
+        }
         %>
     </div>
 
@@ -120,7 +120,7 @@ if(!(session.getAttribute("login")=="ok")){
         $("#wrapper").toggleClass("toggled");
     });
     </script>
-    
+
 </body>
 
 </html>
