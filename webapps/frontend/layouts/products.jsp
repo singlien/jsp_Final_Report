@@ -89,8 +89,9 @@ if(session.getAttribute("login")=="ok"){
 	function AddToCart(Tform){
     var productid = Tform[0].value;
     var purchasenum = Tform[1].value;
-    console.log(productid+", "+purchasenum);
+    $(Tform[2]).addClass("loading");
 
+    console.log(productid+", "+purchasenum);
 		$.get('carts/addtocart.jsp', {
                 pid: productid,
                 pnum: purchasenum
@@ -99,7 +100,9 @@ if(session.getAttribute("login")=="ok"){
                 swal("Add to cart!", "Product has been added into your cart.", "success");
             }
         );
+        $(Tform[2]).removeClass("loading");
 		return null;	
+
 	}
 <%
 }
