@@ -89,20 +89,27 @@ if(session.getAttribute("login")=="ok"){
 	function AddToCart(Tform){
     var productid = Tform[0].value;
     var purchasenum = Tform[1].value;
-    $(Tform[2]).addClass("loading");
 
     console.log(productid+", "+purchasenum);
-		$.get('carts/addtocart.jsp', {
+
+		$.ajax({
+      type: 'GET',
+      url: 'carts/addtocart.jsp',
+      beforeSend: function(){
+        $(Tform[2]).addClass("loading");
+      },
+      data: {
                 pid: productid,
                 pnum: purchasenum
             },
-            function(data){
-                swal("Add to cart!", "Product has been added into your cart.", "success");
-            }
-        );
+      success: function(data){
+        swal("Add to cart!", "Product has been added into your cart.", "success");
+      },
+      complete: function(){
         $(Tform[2]).removeClass("loading");
+      }
+        });
 		return null;	
-
 	}
 <%
 }
