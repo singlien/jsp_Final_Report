@@ -51,6 +51,8 @@
     		  <option value="1">1</option>
     		  <option value="2">2</option>
     		  <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
     		</select>
 	    <button class='ui labeled icon button' style='font-family: "Microsoft JhengHei";' onclick="AddToCart(this.form)">
 	    <i class="shop icon"></i>加入購物車</button>

@@ -36,6 +36,9 @@ if(!(session.getAttribute("login")=="ok")){
     <!-- Sweetalert -->
     <script src="./plugins/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" type="text/css" href="plugins/sweetalert/dist/sweetalert.css">
+    <!-- chart.js -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
+
 </head>
 
 <body>

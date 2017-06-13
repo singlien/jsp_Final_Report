@@ -29,6 +29,9 @@
 
  String test= null;
 
+ int[] platformCount = new int[5];
+ int[] platformAmount = new int[5];
+
 
   try{
        //Fetch data 
@@ -84,6 +87,9 @@
         revenue = "Error";
        }
 %>
+    <!-- chart.js -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
     <div style="margin-top: 100px;"></div>
     <div class="row" style="height: 20px;"></div>
 
@@ -131,7 +137,29 @@
         </div>
 
         <div class="row" style="height: 20px;"></div>
-
+        <div class="ui grid">
+          <div class="eight wide column">
+                 <div class="ui fluid card statistic">
+                     <div class="ui divider"></div>
+                     <canvas id="myChart"></canvas>
+                     <div class="label" style="font-size:17px; font-family:Microsoft JhengHei;">
+                     銷售量平台分布    
+                     </div>
+                     <div class="ui divider"></div>
+                 </div>
+          </div>
+          <div class="eight wide column">
+                 <div class="ui fluid card statistic">
+                     <div class="ui divider"></div>
+                     <canvas id="myChart2"></canvas>
+                     <div class="label" style="font-size:17px; font-family:Microsoft JhengHei;">
+                     銷售額平台分布    
+  
+                     </div>
+                     <div class="ui divider"></div>
+                 </div>
+          </div>
+        </div>
         <div class="row" style="height: 20px;"></div>
 
         <div class="sixteen wide column">
@@ -163,6 +191,30 @@
           totalSales = (oamount*price) +"";
           int inv = rs.getInt("inventory");
           String invleft = (inv-oamount)+"";
+
+          switch(pplatform){
+
+          case "xboxone":
+            platformCount[0]+=oamount;
+            platformAmount[0]+=(oamount*price);
+            break;
+          case "ps4":
+            platformCount[1]+=oamount;
+            platformAmount[1]+=(oamount*price);
+            break;
+          case "psv":
+            platformCount[2]+=oamount;
+            platformAmount[2]+=(oamount*price);
+            break;
+          case "wiiu":
+            platformCount[3]+=oamount;
+            platformAmount[3]+=(oamount*price);
+            break;
+          case "3ds":
+            platformCount[4]+=oamount;
+            platformAmount[4]+=(oamount*price);
+            break;
+          }
 %>
                       <tr>
                           <td class="left aligned"><h3><%=pname%></h3></td>
@@ -237,7 +289,6 @@
     var tempdata=null;
     console.log(productid);
 
-
         $.post('pages/removeinventory.jsp', {
                     pid: productid,
                 },
@@ -258,4 +309,50 @@
    });
 
 }
+</script>
+
+<script type="text/javascript">
+    var ctx = document.getElementById("myChart");
+    var ctx2 = document.getElementById("myChart2");
+
+    var color = ["#ff0040", "#0080ff", "#80ff00","#ff8000", "#ffbf00"];
+    var label = ["XBOX ONE", "PS4", "PS Vita", "Wii U", "3DS"]
+
+    var count = [];
+    var money = [];
+<%
+  for(int ii=0;ii<platformCount.length;ii++){
+%>
+    count.push(<%=platformCount[ii]%>);
+    money.push(<%=platformAmount[ii]%>);
+<%
+  }
+%>
+    var datadoughnut = {
+      datasets: [{
+        data: count,
+        backgroundColor: color
+      }],
+      labels: label
+    };
+
+    var datapie = {
+      datasets:[{
+        data: money,
+        backgroundColor: color
+      }],
+      labels: label
+    }
+
+    console.log(datadoughnut);
+    new Chart(ctx,{
+      type:'doughnut',
+      data: datadoughnut
+    });    
+
+    new Chart(ctx2,{
+      type:'doughnut',
+      data: datapie
+    });      
+           
 </script>
