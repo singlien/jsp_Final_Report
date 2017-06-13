@@ -64,9 +64,6 @@
     <!-- End of Header Carousel -->
     <!-- Products -->
     <div class="container">
-     <%
-     //String f =request.getParameter("query");
-     %>
         <jsp:include page="./layouts/products.jsp"/>
 
     </div>
