@@ -67,8 +67,7 @@
      <%
      String f =request.getParameter("search");
      %>
-        <input type="hidden" name="query" value="<%=f%>">
-        <jsp:include page="./layouts/products.jsp"/>
+        <jsp:include page="./layouts/products.jsp?query=<%=f%>"/>
 
     </div>
 
