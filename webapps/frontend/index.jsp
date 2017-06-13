@@ -65,7 +65,7 @@
     <!-- Products -->
     <div class="container">
      <%
-     String f =request.getParameter("query");
+     String f =request.getParameter("search");
      %>
         <input type="hidden" name="query" value="<%=f%>">
         <jsp:include page="./layouts/products.jsp"/>
