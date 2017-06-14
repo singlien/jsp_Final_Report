@@ -166,7 +166,7 @@
             <div class="ui card" style="width: 100%;">
 
 
-                <table class="ui celled table">
+                <table class="ui unstackable striped table">
                       <thead>
                       <tr>
                           <th>產品名稱</th>

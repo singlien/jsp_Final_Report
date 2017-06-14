@@ -30,7 +30,7 @@
 
             <div class="ui card" style="width: 100%;">
 
-                <table class="ui celled table">
+                <table class="ui unstackable striped table">
 
                       <tr>
                           <th>買家名稱</th>
