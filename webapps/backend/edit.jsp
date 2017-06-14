@@ -105,7 +105,7 @@ if(queryid!=null && queryid!=""){//edit
 <%
 if(name!=null){
 %>
-            <form class="ui form" action="./pages/updateinventory.jsp" method="post">
+            <form class="ui form" action="#" method="post">
                 <input type="hidden" name="pid" value="<%=queryid%>">
                 <h1 class="ui dividing aligned center header">
                   修改資料
@@ -156,14 +156,17 @@ if(name!=null){
                     <input type="url" name="video" value="<%=video%>">
                 </div>
                 <div class="ui horizontal divider"></div>
-                    <input type="submit" class="ui right floated green button" value="儲存">
-                    <input type="reset" class="ui right floated red button" value="清除">
+                    <button type="submit" class="ui right floated green button" onclick="updateInventory(this.form);">儲存</button>
+                    <button type="reset" class="ui right floated red button">清除</button>
             </form>
             <button class="ui black button" onclick="window.history.back();">取消</button>
+            <div class="ui segment hidden" id="return_segment"> 
+			  <p id="return_textarea">讀取中請稍後</p>
+			</div>
 <%
 }else{
 %>
-            <form class="ui form" action="./pages/updateinventory.jsp" method="post">
+            <form class="ui form" action="#" method="post">
                 <input type="hidden" name="pid" value="0">
                 <h1 class="ui dividing aligned center header">
                   新增資料
@@ -213,8 +216,8 @@ if(name!=null){
                     <input type="url" name="video" placeholder="Enter url...">
                 </div>
                 <div class="ui horizontal divider"></div>
-                    <input type="submit" class="ui right floated green button" value="儲存">
-                    <input type="reset" class="ui right floated red button" value="清除">
+                    <button type="submit" class="ui right floated green button" onclick="updateInventory(this.form);">儲存</button>
+                    <button type="reset" class="ui right floated red button">清除</button>
             </form>
 <%}%>
         </div>
@@ -228,6 +231,45 @@ if(name!=null){
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+
+
+    function updateInventory(Tform){
+    	var pid = Tform[0].value;
+    	var product_name = Tform[1].value;
+    	var platform = Tform[2].value;
+    	var date = Tform[4].value;
+    	var inventory = Tform[5].value;
+    	var price = Tform[6].value;
+    	var picture = Tform[7].value;
+    	var video = Tform[8].value;
+    	var btn = Tform[9];
+
+    	$.ajax({
+    		type: "POST",
+    		url: "./pages/updateinventory.jsp", 
+    		beforeSend: function(){
+    			$(btn).addClass('loading');
+    			$('#return_segment').removeClass("hidden");
+    		},
+    		data:{
+    			pid: pid,
+    			product_name: product_name,
+    			platform: platform,
+    			date: date,
+    			inventory: inventory,
+    			price: price,
+    			picture: picture,
+    			video: video
+    		},
+    		success: function(data){
+    			$('#return_textarea').html(data); 
+    		},
+    		complete: function(){
+    			window.open("./index.jsp","_self");
+    		}
+    	})
+    	return null;
+    }
     </script>
 </body>
 
