@@ -234,6 +234,10 @@ $('#m option[value="<%=month%>"]').attr('selected', true);
 $('#y option[value="<%=year%>"]').attr('selected', true);
 
 		$('.form-submit').click(function(){
+			emailRule = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+			if($("#email").val().search(emailRule) == -1)alert("e-mail格式錯誤");
+      else if($("#password").val().length<6)alert("密碼長度不能小於6");
+      else{
       $.ajax({
                 url: 'mo.jsp',
                 type: 'post',
@@ -265,6 +269,7 @@ $('#y option[value="<%=year%>"]').attr('selected', true);
                     alert(data);
                   }
             });
+          }
 		});
 
 });

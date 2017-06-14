@@ -17,8 +17,6 @@
  String message="";
  String sql = null;
 
- String query=request.getParameter("query");
-
 %>
 
 <div style="margin-top: 100px;"></div>
@@ -27,14 +25,17 @@
   <!-- card -->
 
   <%
+
+
+    String query=request.getParameter("query");
     try{
        //Fetch data
        database.connectDB();
 
        //Get product count
-       sql = "select * from `FPinventory`;";
+       sql = "select * from FPinventory;";
        if(query!=null && query!=""){
-       sql = "select * from `FPinventory` where name like '%"+query+"%';";
+       sql = "select * from FPinventory where name like '%"+query+"%';";
        }
        database.query(sql);
        rs = database.getRS();

@@ -173,6 +173,10 @@ $(document).ready(function(){
 $(document).pngFix( );
 
 		$('.form-submit').click(function(){
+			emailRule = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+			if($("#email").val().search(emailRule) == -1)alert("e-mail格式錯誤");
+      else if($("#password").val().length<6)alert("密碼長度不能小於6");
+			else{
       $.ajax({
                 url: 'add.jsp',
                 type: 'post',
@@ -195,12 +199,15 @@ $(document).pngFix( );
                   if (parseInt(data) == 1) {
                     alert("新增成功");
 										$(".inp-form").val("");
+										history.go(-1);
+
                   }
                 },
                 error: function(data){
                     alert(data);
                   }
             });
+					}
 		});
 
 });

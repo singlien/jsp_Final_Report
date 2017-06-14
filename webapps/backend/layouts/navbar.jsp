@@ -39,7 +39,7 @@
                     </li>
             </ul>
             <!-- Search bar -->
-            <form class="nav navbar-form navbar-right" action="index.jsp" method="get">
+            <form class="nav navbar-form navbar-right" action="#" method="get">
                 <div class="ui left icon input">
                 <i class="search icon"></i>
                     <input type="text" name="query" class="form-control" placeholder="Search for products ~" width="30px">

@@ -34,7 +34,7 @@
 
 
   try{
-       //Fetch data 
+       //Fetch data
        database.connectDB();
 
        //Get product count
@@ -143,7 +143,7 @@
                      <div class="ui divider"></div>
                      <canvas id="myChart"></canvas>
                      <div class="label" style="font-size:17px; font-family:Microsoft JhengHei;">
-                     銷售量平台分布    
+                     銷售量平台分布
                      </div>
                      <div class="ui divider"></div>
                  </div>
@@ -153,8 +153,8 @@
                      <div class="ui divider"></div>
                      <canvas id="myChart2"></canvas>
                      <div class="label" style="font-size:17px; font-family:Microsoft JhengHei;">
-                     銷售額平台分布    
-  
+                     銷售額平台分布
+
                      </div>
                      <div class="ui divider"></div>
                  </div>
@@ -273,15 +273,15 @@
   function RemoveConfirm(Tform){
         console.log(Tform);
 
-  swal({   
-    title: "Are you sure?",   
+  swal({
+    title: "Are you sure?",
     text: "You will not be able to recover this data!",
-    type: "warning", 
-    showCancelButton: true,   
-    confirmButtonColor: "#DD6B55",   
-    confirmButtonText: "Yes, delete it!",   
-    closeOnConfirm: false 
-  }, 
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#DD6B55",
+    confirmButtonText: "Yes, delete it!",
+    closeOnConfirm: false
+  },
   function(){
     //confirm delete
     //ajax
@@ -296,8 +296,8 @@
                     console.log(data);
                     tempdata=data;
                 }
-        );  
- 
+        );
+
     swal({
       title: "Deleted!",
       text: tempdata,
@@ -348,13 +348,13 @@
     new Chart(ctx,{
       type:'doughnut',
       data: datadoughnut
-    });    
+    });
 
     new Chart(ctx2,{
       type:'doughnut',
       data: datapie
-    });      
-           
+    });
+
 </script>
 
 
