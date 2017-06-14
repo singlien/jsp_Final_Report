@@ -26,7 +26,7 @@ if(session.getAttribute("login")!="ok"){
     try{
 
      database.connectDB();
-     String sql = "SELECT ord.order_id, inv.name, inv.price, inv.picture, ord.`order_num` FROM `FPorder` as ord, `FPpersonal` as per, `FPinventory` as inv where per.`id` = ord.`person_id` and inv.id = ord.`product_id` and ord.`person_id`='"+uid+"';"; 
+     String sql = "SELECT ord.order_id, inv.name, inv.price, inv.picture, ord.`order_num`,ord.`confirmation` FROM `FPorder` as ord, `FPpersonal` as per, `FPinventory` as inv where per.`id` = ord.`person_id` and inv.id = ord.`product_id` and ord.`person_id`='"+uid+"';"; 
      database.query(sql);
      rs = database.getRS();
 
@@ -73,6 +73,12 @@ if(session.getAttribute("login")!="ok"){
       String pict = rs.getString("picture");
       String pnum = rs.getString("order_num");
       String id = rs.getString("order_id");
+      int conf = rs.getInt("ord.confirmation");
+
+      if(conf==1){
+        count--;
+        continue;
+      }
 %>
             <tr>
                 <td><%=count%></td>
@@ -89,7 +95,7 @@ if(session.getAttribute("login")!="ok"){
             </tr>
             <%}%>
         </table>
-          <button type="button" class="btn btn-primary">Purchase</button>
+          <button type="button" class="btn btn-primary" onclick="Purchase();">Purchase</button>
     </div>
 
     <!-- jQuery -->
@@ -133,6 +139,48 @@ if(session.getAttribute("login")!="ok"){
           },
           function(){location.reload()});
           });
+      }
+
+      function Purchase(){
+
+        var form = $('form');
+        var id = [];
+
+        //load from second data, skip first form which is search bar
+        for(var i=1;i<form.length;i++){
+          id.push(form[i][0].value);
+        }
+
+        console.log(id);
+
+        // confirm purchase
+        swal({
+            title: "Are you sure?",
+            text: "All products in cart will be removed after purchase, you cannot edit after purchase!",  
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, purchase!",
+            closeOnConfirm: false 
+         },
+        function(){
+            for(var i=0;i<id.length;i++){
+              $.get('carts/purchase.jsp', {
+                ordid: id[i],
+              },
+                function(data){
+                  console.log(data);
+                }
+              );
+            }
+           swal({
+              title: "Purchased!",
+              text: "All Purchase has been confirmed and removed from cart",
+              type: "success",
+              closeOnConfirm: false
+            },
+            function(){location.reload()});
+            });        
       }
     </script>
 
