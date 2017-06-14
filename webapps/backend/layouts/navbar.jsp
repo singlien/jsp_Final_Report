@@ -33,13 +33,13 @@
                         out.print("<a href='./membership/login.html'>登入</a>");
                         out.print("</li>");
                     }
-                    %> 
+                    %>
                     <li>
                         <a href="./edit.jsp">新增產品</a>
-                    </li>      
+                    </li>
             </ul>
             <!-- Search bar -->
-            <form class="nav navbar-form navbar-right" action="#" method="get">
+            <form class="nav navbar-form navbar-right" action="index.jsp" method="get">
                 <div class="ui left icon input">
                 <i class="search icon"></i>
                     <input type="text" name="query" class="form-control" placeholder="Search for products ~" width="30px">
