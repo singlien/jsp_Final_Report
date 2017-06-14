@@ -13,7 +13,7 @@
  String url = "";
  String driver = "com.mysql.jdbc.Driver";
  ResultSet rs = null;
-
+ 
  String message="";
  String sql = null;
 
@@ -29,7 +29,7 @@
 
     String query=request.getParameter("query");
     try{
-       //Fetch data
+       //Fetch data 
        database.connectDB();
 
        //Get product count
@@ -40,7 +40,7 @@
        database.query(sql);
        rs = database.getRS();
       if(rs!=null){
-        while(rs.next()){
+        while(rs.next()){ 
 
         String name=rs.getString("name");
         String platform=rs.getString("platform");
@@ -74,7 +74,7 @@
       </div>
     </div>
     <div class="extra content">
-    <form action="javascript:void(0);">
+    <form action="javascript:void(0);">  
       <input type="hidden" name="id" value="<%=id%>">
       <div class="two ui buttons">
         <button class="ui blue button" onclick="EditRedirect(this.form)">
@@ -85,20 +85,20 @@
           <i class="remove icon"></i>
             移除
         </button>
-      </div>
+      </div>   
     </form>
-
+      
     </div>
   </div>
 
   <%
-      }//while
+      }//while 
 
        }else{
         }
        }catch(Exception ex){
           out.print(ex);
-       }
+       } 
 %>
   </div>
 
@@ -117,15 +117,15 @@ function EditRedirect(Tform){
 }
 
 function RemoveConfirm(Tform){
-  swal({
-    title: "Are you sure?",
+  swal({   
+    title: "Are you sure?",   
     text: "You will not be able to recover this data!",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#DD6B55",
-    confirmButtonText: "Yes, delete it!",
-    closeOnConfirm: false
-  },
+    type: "warning", 
+    showCancelButton: true,   
+    confirmButtonColor: "#DD6B55",   
+    confirmButtonText: "Yes, delete it!",   
+    closeOnConfirm: false 
+  }, 
   function(){
     //confirm delete
     //ajax
@@ -141,8 +141,8 @@ function RemoveConfirm(Tform){
                     console.log(data);
                     tempdata=data;
                 }
-        );
-
+        );  
+ 
     swal({
       title: "Deleted!",
       text: tempdata,

@@ -33,10 +33,10 @@
                         out.print("<a href='./membership/login.html'>登入</a>");
                         out.print("</li>");
                     }
-                    %>
+                    %> 
                     <li>
                         <a href="./edit.jsp">新增產品</a>
-                    </li>
+                    </li>      
             </ul>
             <!-- Search bar -->
             <form class="nav navbar-form navbar-right" action="#" method="get">

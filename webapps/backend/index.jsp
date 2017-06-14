@@ -75,8 +75,8 @@ if(!(session.getAttribute("login")=="ok")){
 
             case "member":
                 out.print("member");
-                response.sendRedirect("./customer/index.jsp");
             %>
+                <jsp:include page="pages/member.jsp"/>
             <%
             break;
 
