@@ -43,6 +43,7 @@
          message="註冊成功";
          }
        }
+       database.closeDB();
      }catch(Exception ex){
        message="註冊失敗"+ex;
        out.println(ex);

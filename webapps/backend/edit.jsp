@@ -50,20 +50,15 @@ if(queryid!=null && queryid!=""){//edit
 
 
         }
+
+    database.closeDB();
     }catch(Exception ex){
     out.print(ex);
   }
 }else{//new entry
     title="New Product Entry";
-
-
 }
-
-
-
- %>
-
-
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -221,11 +216,6 @@ if(name!=null){
                     <input type="submit" class="ui right floated green button" value="儲存">
                     <input type="reset" class="ui right floated red button" value="清除">
             </form>
-
-
-
-
-
 <%}%>
         </div>
     </div>

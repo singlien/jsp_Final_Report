@@ -38,8 +38,8 @@
               break;
             }
           }
-          out.println("帳號或密碼錯誤！");
         }
+        out.println("帳號或密碼錯誤！");
       }
       
      }catch(Exception ex){
@@ -49,5 +49,5 @@
    {
     out.println("帳號不能為空！");
    }
-
+database.closeDB();
 %>

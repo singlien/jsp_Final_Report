@@ -149,4 +149,6 @@ if(status==1){
 
 }
 </script>
-
+<%
+database.closeDB();
+%>

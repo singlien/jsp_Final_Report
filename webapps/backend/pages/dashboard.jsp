@@ -356,3 +356,8 @@
     });      
            
 </script>
+
+
+<%
+database.closeDB();
+%>

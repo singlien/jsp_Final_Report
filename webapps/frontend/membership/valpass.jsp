@@ -38,8 +38,8 @@
               break;
             }
           }
-          out.println("帳號或密碼錯誤！");
         }
+        out.println("帳號或密碼錯誤！");
       }
       
      }catch(Exception ex){

@@ -39,6 +39,8 @@
         }catch(Exception ex){
            out.print(ex);
         }
+        database.closeDB();
+
 %>
 <script type="text/javascript">
   window.open("../index.jsp?page=products", "_self")

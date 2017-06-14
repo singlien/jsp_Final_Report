@@ -86,6 +86,7 @@
                 } else {
                     $('#error_message').removeClass('hidden');
                     $('#error_message').html(data);
+                    $('#login_btn').removeClass('loading');
                 }
             });
             return false;

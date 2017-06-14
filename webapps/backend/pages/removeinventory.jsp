@@ -37,5 +37,5 @@
   }else{
   	out.print("Please login");
   }
-
+database.closeDB();
 %>

@@ -154,3 +154,7 @@ function RemoveConfirm(Tform){
 }
 
 </script>
+
+<%
+database.closeDB();
+%>
