@@ -210,6 +210,22 @@ $(document).pngFix( );
 					}
 		});
 
+		$("#account").blur(function(){
+			$.ajax({
+								url: 'checkac.jsp',
+								type: 'post',
+								data: {
+												account:$("#account").val(),
+											},
+								success: function (data) {
+									$( "#warntext" ).html(data);
+								},
+								error: function(data){
+										alert(data);
+									}
+						});
+	});
+
 });
 
 
@@ -319,7 +335,8 @@ $(document).pngFix( );
 		<table border="0" cellpadding="0" cellspacing="0"  id="id-form">
 		<tr>
 			<th valign="top">Account:</th>
-			<td><input type="text" value="" class="inp-form" id="account"/></td>
+			<td><input type="text" value="" class="inp-form" id="account"/>
+			<div id="warntext"></div></td>
 			<td>
 			</td>
 		</tr>

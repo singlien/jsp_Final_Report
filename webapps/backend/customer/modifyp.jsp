@@ -272,6 +272,27 @@ $('#y option[value="<%=year%>"]').attr('selected', true);
           }
 		});
 
+
+    		$("#account").blur(function(){
+    			$.ajax({
+    								url: 'checkac.jsp',
+    								type: 'post',
+    								data: {
+    												account:$("#account").val(),
+    											},
+    								success: function (data) {
+                    if($("#account").val() == "<%=account%>" )
+                    $( "#warntext" ).html("");
+                    else
+    									$( "#warntext" ).html(data);
+    								},
+    								error: function(data){
+    										alert(data);
+    									}
+    						});
+    	});
+
+
 });
 
 
@@ -385,7 +406,8 @@ $('#y option[value="<%=year%>"]').attr('selected', true);
 		</tr>
 		<tr>
 			<th valign="top">Account:</th>
-			<td><input type="text" value="<%=account%>" class="inp-form" id="account"/></td>
+			<td><input type="text" value="<%=account%>" class="inp-form" id="account"/>
+      <div id="warntext"></div></td>
 			<td>
 			</td>
 		</tr>
