@@ -237,6 +237,7 @@ $(document).ready(function(){
 					<th class="table-header-check"><a id="toggle-all" ></a> </th>
 					<th class="table-header-repeat line-left minwidth-1"><a >Account</a></th>
 					<th class="table-header-repeat line-left"><a >Name</a></th>
+					<th class="table-header-repeat line-left"><a >Gender</a></th>
 					<th class="table-header-repeat line-left"><a >Birth</a></th>
 					<th class="table-header-repeat line-left"><a >E-mail</a></th>
 					<th class="table-header-options line-left"><a >Options</a></th>

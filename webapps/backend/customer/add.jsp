@@ -10,6 +10,7 @@ String  account= request.getParameter("account");
 String  password= request.getParameter("password");
 String  name= request.getParameter("name");
 String  email= request.getParameter("email");
+String  gender= request.getParameter("gender");
 String  sql;
 String year= request.getParameter("year");
 String month=request.getParameter("month");
@@ -33,13 +34,14 @@ ResultSet rs;
       message = "2";//account重複
     }
     else{
-    String insert="INSERT INTO FPpersonal(account,password,name,birth,email) VALUES(?,?,?,?,?)";
+    String insert="INSERT INTO FPpersonal(account,password,name,birth,email,gender) VALUES(?,?,?,?,?,?)";
     PreparedStatement prestate =  con.prepareStatement(insert);
     prestate.setString(1, account);
     prestate.setString(2, password);
     prestate.setString(3, name);
     prestate.setString(4, birth);
     prestate.setString(5, email);
+    prestate.setString(6, gender);
     prestate.executeUpdate();
     message = "1";
     }

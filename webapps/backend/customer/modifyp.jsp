@@ -11,6 +11,7 @@ String  sql;
 String account= "";
 String password= "";
 String name= "";
+String gender= "";
 String birth= "";
 int year=0;
 int month=0;
@@ -41,6 +42,7 @@ ResultSet rs;
       day= Integer.parseInt(parts[2]);
       email= rs.getString("email");
       time= rs.getString("last-update");
+      gender= rs.getString("gender");
 
       message = "2";//刪除成功
     }
@@ -74,17 +76,6 @@ ResultSet rs;
 <script src="js/jquery/ui.core.js" type="text/javascript"></script>
 <script src="js/jquery/ui.checkbox.js" type="text/javascript"></script>
 <script src="js/jquery/jquery.bind.js" type="text/javascript"></script>
-<script type="text/javascript">
-$(function(){
-	$('input').checkBox();
-	$('#toggle-all').click(function(){
- 	$('#toggle-all').toggleClass('toggle-checked');
-	$('#mainform input[type=checkbox]').checkBox('toggle');
-	return false;
-	});
-});
-</script>
-
 
 <![if !IE 7]>
 
@@ -233,6 +224,8 @@ $('#d option[value="<%=day%>"]').attr('selected', true);
 $('#m option[value="<%=month%>"]').attr('selected', true);
 $('#y option[value="<%=year%>"]').attr('selected', true);
 
+$("input[name=gender][value='<%=gender%>']").attr('checked',true);
+
 		$('.form-submit').click(function(){
 			emailRule = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
 			if($("#email").val().search(emailRule) == -1)alert("e-mail格式錯誤");
@@ -245,6 +238,7 @@ $('#y option[value="<%=year%>"]').attr('selected', true);
                         id:$("#id").val(),
                         account:$("#account").val(),
                         password:$("#password").val(),
+                        gender:$("input[name='gender']:checked").val(),
                         name:$("#name").val(),
                         email:$("#email").val(),
                         year:$("#y").val(),
@@ -496,6 +490,13 @@ $('#y option[value="<%=year%>"]').attr('selected', true);
 		</td>
 		<td></td>
 	</tr>
+
+	<tr>
+		<th valign="top">Gender:</th>
+		<td><input type="radio" name="gender" id="gender" value="male" checked> Male <input type="radio" name="gender" id="gender" value="female"> Female</td>
+		<td></td>
+	</tr>
+
 	<tr>
 		<th valign="top">E-mail:</th>
 		<td><input type="text" value="<%=email%>" class="inp-form" id="email"/></td>

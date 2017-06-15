@@ -29,7 +29,7 @@ ResultSet rs;
     while(rs.next()){
       sqlresult += "<tr class=\"replace\">";
       sqlresult += "<td><input type=\"checkbox\" name=\""+rs.getString("account")+"\" value=\""+rs.getString("id")+"\"/></td>";
-      sqlresult += "<td>"+rs.getString("account")+"</td><td>"+rs.getString("name")+"</td><td>"+rs.getString("birth")+"</td>";
+      sqlresult += "<td>"+rs.getString("account")+"</td><td>"+rs.getString("name")+"</td><td>"+rs.getString("gender")+"</td><td>"+rs.getString("birth")+"</td>";
       sqlresult += "<td>"+rs.getString("email")+"</td>";
       sqlresult += "<td class=\"options-width\"><a href=\"modifyp.jsp?id="+rs.getString("id")+"\" title=\"Edit\" class=\"icon-1 info-tooltip\"></a><a href=\"delete.jsp?id="+rs.getString("id")+"\" title=\"Delete\" class=\"icon-2 info-tooltip\"  onclick=\"dcheck2()\"></a></td></tr>";
     }

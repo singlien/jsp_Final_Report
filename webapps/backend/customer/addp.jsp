@@ -18,14 +18,6 @@ if(!(session.getAttribute("login")=="ok"))response.sendRedirect("../membership/l
 <script src="js/jquery/ui.checkbox.js" type="text/javascript"></script>
 <script src="js/jquery/jquery.bind.js" type="text/javascript"></script>
 <script type="text/javascript">
-$(function(){
-	$('input').checkBox();
-	$('#toggle-all').click(function(){
- 	$('#toggle-all').toggleClass('toggle-checked');
-	$('#mainform input[type=checkbox]').checkBox('toggle');
-	return false;
-	});
-});
 </script>
 
 
@@ -185,6 +177,7 @@ $(document).pngFix( );
                         password:$("#password").val(),
                         name:$("#name").val(),
                         email:$("#email").val(),
+                        gender:$("#gender").val(),
                         year:$("#y").val(),
                         month:$("#m").val(),
                         day:$("#d").val(),
@@ -423,6 +416,11 @@ $(document).pngFix( );
 			</table>
 
 		</td>
+		<td></td>
+	</tr>
+	<tr>
+		<th valign="top">Gender:</th>
+		<td><input type="radio" name="gender" id="gender" value="male" checked> Male <input type="radio" name="gender" id="gender" value="female"> Female</td>
 		<td></td>
 	</tr>
 	<tr>

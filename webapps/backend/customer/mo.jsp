@@ -8,6 +8,7 @@ request.setCharacterEncoding("UTF-8");
 response.setCharacterEncoding("UTF-8");
 String  id= request.getParameter("id");
 String  account= request.getParameter("account");
+String  gender= request.getParameter("gender");
 String  password= request.getParameter("password");
 String  name= request.getParameter("name");
 String  email= request.getParameter("email");
@@ -34,14 +35,15 @@ ResultSet rs;
       message = "3";//account重複
     }
     else{
-    String insert="UPDATE FPpersonal SET account = ?, password = ?, name = ?, birth = ?, email = ? WHERE id = ?";
+    String insert="UPDATE FPpersonal SET account = ?, password = ?, name = ?, birth = ?, email = ?, gender = ? WHERE id = ?";
     PreparedStatement prestate =  con.prepareStatement(insert);
     prestate.setString(1, account);
     prestate.setString(2, password);
     prestate.setString(3, name);
     prestate.setString(4, birth);
     prestate.setString(5, email);
-    prestate.setString(6, id);
+    prestate.setString(6, gender);
+    prestate.setString(7, id);
     prestate.executeUpdate();
     message = "1";
     }
