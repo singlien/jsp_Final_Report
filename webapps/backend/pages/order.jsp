@@ -45,7 +45,7 @@ try{
        //Get inventory list
        String query=request.getParameter("query");//where inv.name like \"%"+query+"%\"
        if(query!=null)
-       sql = "select * from FPorder as ord left join FPpersonal as per on ord.person_id=per.id left join FPinventory as inv on inv.id=ord.product_id order by order_id desc;";
+       sql = "select * from FPorder as ord left join FPpersonal as per on ord.person_id=per.id left join FPinventory as inv on inv.id=ord.product_id where inv.name like \"%"+query+"%\" or per.name like \"%"+query+"%\" order by order_id desc;";
        else
        sql = "select * from FPorder as ord left join FPpersonal as per on ord.person_id=per.id left join FPinventory as inv on inv.id=ord.product_id order by order_id desc;";
        database.query(sql);
