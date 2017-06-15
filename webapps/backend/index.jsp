@@ -58,7 +58,6 @@ if(!(session.getAttribute("login")=="ok")){
     <div class="container">
      <%
         String f =request.getParameter("page");
-        String query=request.getParameter("query");
         if(f==null||f==""){
         %>
             <jsp:include page="pages/dashboard.jsp"/>
@@ -83,7 +82,6 @@ if(!(session.getAttribute("login")=="ok")){
             case "products":
                 out.print("products");
             %>
-                <input type="hidden" name="query" value="<%=query%>">
                 <jsp:include page="pages/products.jsp"/>
             <%
             break;

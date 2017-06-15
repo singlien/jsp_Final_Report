@@ -33,16 +33,19 @@
                         out.print("<a href='./membership/login.html'>登入</a>");
                         out.print("</li>");
                     }
-                    %> 
+                    String f =request.getParameter("page");
+                    if(f==null)f="";
+                    %>
                     <li>
                         <a href="./edit.jsp">新增產品</a>
-                    </li>      
+                    </li>
             </ul>
             <!-- Search bar -->
-            <form class="nav navbar-form navbar-right" action="#" method="get">
+            <form class="nav navbar-form navbar-right" action="" method="get">
                 <div class="ui left icon input">
                 <i class="search icon"></i>
                     <input type="text" name="query" class="form-control" placeholder="Search for products ~" width="30px">
+                    <input type="hidden" name="page" value="<%=f%>">
                 </div>
                 <button type="submit" class="ui inverted basic button" value="search">Search</button>
             </form>

@@ -17,7 +17,7 @@
  int x = 0;int y = 0;
  String message="";
  String sql = null;
-       
+
 
 %>
 		<!-- margin leave black -->
@@ -43,6 +43,10 @@
 try{
 	   database.connectDB();
        //Get inventory list
+       String query=request.getParameter("query");//where inv.name like \"%"+query+"%\"
+       if(query!=null)
+       sql = "select * from FPorder as ord left join FPpersonal as per on ord.person_id=per.id left join FPinventory as inv on inv.id=ord.product_id order by order_id desc;";
+       else
        sql = "select * from FPorder as ord left join FPpersonal as per on ord.person_id=per.id left join FPinventory as inv on inv.id=ord.product_id order by order_id desc;";
        database.query(sql);
        rs = database.getRS();
@@ -76,7 +80,7 @@ if(status==1){
                             <button type="button" class="negitave ui icon button" data-tooltip="Press to confirm" onclick="">
                             <i class="remove icon"></i>
                             </button>
-<%}%>                            
+<%}%>
                             <button class="ui red icon button" data-tooltip="Remove product" onclick="RemoveConfirm(this.form);">
                             <i class="remove icon"></i>
                             </button>
@@ -112,15 +116,15 @@ if(status==1){
   function RemoveConfirm(Tform){
         console.log(Tform);
 
-  swal({   
-    title: "Are you sure?",   
+  swal({
+    title: "Are you sure?",
     text: "You will not be able to recover this order!",
-    type: "warning", 
-    showCancelButton: true,   
-    confirmButtonColor: "#DD6B55",   
-    confirmButtonText: "Yes, delete it!",   
-    closeOnConfirm: false 
-  }, 
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#DD6B55",
+    confirmButtonText: "Yes, delete it!",
+    closeOnConfirm: false
+  },
   function(){
     //confirm delete
     //ajax
@@ -135,8 +139,8 @@ if(status==1){
                     console.log(data);
                     tempdata=data;
                 }
-        );  
- 
+        );
+
     swal({
       title: "Deleted!",
       text: tempdata,

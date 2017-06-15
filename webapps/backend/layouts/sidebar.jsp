@@ -16,7 +16,7 @@
         <a href="./index.jsp?page=dashboard">儀表版</a>
     </li>
     <li>
-        <a href="../../frontend/index.jsp">回到前台</a>
+        <a href="../frontend/index.jsp">回到前台</a>
     </li>
     <h4 class="ui horizontal divider header" style="color: white;">
     <i class="cubes icon"></i>

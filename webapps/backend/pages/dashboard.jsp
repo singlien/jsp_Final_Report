@@ -178,7 +178,12 @@
                       </tr>
 <%
        //Get inventory list
+
+       String query = request.getParameter("query");////where inv.name like \"%"+query+"%\"
+       if(query!=null)
        sql = "select inv.id, inv.name, inv.`platform`, inv.price, sum(ord.order_num),inv.inventory from `FPinventory` as inv left join `FPorder` as ord on inv.`id`=ord.`product_id` group by inv.`id` order by sum(ord.order_num) desc;";
+       else
+       sql = "select inv.id, inv.name, inv.`platform`, inv.price, sum(ord.order_num),inv.inventory from `FPinventory` as inv  left join `FPorder` as ord on inv.`id`=ord.`product_id` group by inv.`id` order by sum(ord.order_num) desc;";
        database.query(sql);
        rs = database.getRS();
        if(rs!=null){
