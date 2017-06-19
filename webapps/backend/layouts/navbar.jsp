@@ -34,8 +34,7 @@
                         out.print("</li>");
                     }
                     String f =request.getParameter("page");
-                    if(f==null)f="";
-                    if(f.equals("dashboard"))f="products";
+                    if(f==null||f.equals("dashboard"))f="products";
                     %>
                     <li>
                         <a href="./edit.jsp">新增產品</a>
