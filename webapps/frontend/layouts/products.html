@@ -1,29 +1,57 @@
-<div class='col-sm-4 portfolio-item' id='div_index20'>
-    <div class="header-margin"></div>
-    <h2 class="ui header"><%=name%><a class="ui red label"><%=type%></a>
-
-</h2>
-    <a><img class='img-responsive' src='<%=pict%>'/></a>
-    <h3 id='price' class="ui header">Price</h3>
-    <h3 class="ui header" style="text-align: right; ">NT$ <%=price%></h3>
-    <form action="javascript:AddToCart(this)" class="product">
-        <input type="hidden" value='<%=id%>'>
-        <select class="ui compact selection dropdown">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
-        <button type="submit" class='ui labeled icon button' style='font-family: "Microsoft JhengHei";' onclick="showform(this.form)">
-            <i class="shop icon"></i>加入購物車</button>
-    </form>
+<div class="card">
+    <div class="blurring dimmable image">
+        <div class="ui dimmer">
+            <div class="content">
+                <div class="center">
+                    <div class="ui inverted button"><a href="<%=video%>">Video link</a></div>
+                </div>
+            </div>
+        </div>
+        <img src="<%=picture%>">
+    </div>
+    <div class="content">
+        <a class="header">
+            <%=name%>
+                <div class="ui red horizontal label">
+                    <%=platform%>
+                </div>
+        </a>
+        <div class="meta">
+            <a>日期:</a>
+            <%=date%>
+                <br>
+                <a>存貨:</a>
+                <%=inv%>
+                    <br>
+                    <a>售價:</a>
+                    <%=price%>
+        </div>
+    </div>
+    <div class="extra content">
+        <input type="hidden" name="id" value="<%=id%>">
+        <div class="ui bottom">
+            <form action="javascript:AddToCart(this)" class="product">
+                <input type="hidden" value='<%=id%>'>
+                <select class="ui compact selection dropdown">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <button type="submit" class='ui labeled icon button' style='font-family: "Microsoft JhengHei";' onclick="showform(this.form)">
+                    <i class="shop icon"></i>加入購物車</button>
+            </form>
+        </div>
+    </div>
 </div>
 <script type="text/javascript">
 function AddToCart(Tform) {
 
-   //console.log(Tform);
+    //console.log(Tform);
 }
 
-function showform(Tform){
+function showform(Tform) {
 
     var productid = Tform[0].value;
     var purchasenum = Tform[1].value;

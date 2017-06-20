@@ -35,34 +35,60 @@
       String price = rs.getString("price");
       String pict = rs.getString("picture");
       String video = rs.getString("video");
+      String date = rs.getString("date");
       String type = rs.getString("platform");
         if(rowCount==rowLimit){
-          out.print("<div class='row'>");
+         //out.print("<div class='row'>");
         }
 %>
-  <div class='col-sm-4 portfolio-item' id='div_index20'>
-    <div class="header-margin"></div>
-    <h2 class="ui header"><%=name%><a class="ui red label"><%=type%></a></h2>
-    <a href="<%=video%>"><img class='img-responsive' src='<%=pict%>'/></a>
-    <h3 class="ui header" >NT$ <%=price%></h3>   
-    	<form action="javascript:void(0);">	
-    	<input type="hidden" value='<%=id%>'> 	
-        <select class="ui compact selection dropdown">
-    		  <option value="1">1</option>
-    		  <option value="2">2</option>
-    		  <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-    		</select>
-	    <button class='ui labeled icon button' style='font-family: "Microsoft JhengHei";' onclick="AddToCart(this.form)">
-	    <i class="shop icon"></i>加入購物車</button>
-  	 </form>
-  </div>
+  <div class="card">
+    <div class="blurring dimmable image">
+        <div class="ui dimmer">
+            <div class="content">
+                <div class="center">
+                    <div class="ui inverted button"><a href="<%=video%>">Video link</a></div>
+                </div>
+            </div>
+        </div>
+        <img src="<%=pict%>">
+    </div>
+    <div class="content">
+        <div class="header">
+            <%=name%>
+                <div class="ui red horizontal label">
+                    <%=type%>
+                </div>
+        </div>
+        <div class="meta">
+           <span class="date">上市日期：<%=date%></span>
+        </div><br>
+        <div class="header"><p>售價:<%=price%></p></div>
+    </div>
+    <div class="extra content">
+        <span class="right floated">
+        </span>
+        <input type="hidden" name="id" value="<%=id%>">
+        <div class="ui bottom">
+            <form action="javascript:AddToCart(this)" class="product">
+                <input type="hidden" value='<%=id%>'>
+                <select class="ui compact selection dropdown">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <button type="submit" class='ui labeled icon button' style='font-family: "Microsoft JhengHei";' onclick="AddToCart(this.form)">
+                    <i class="shop icon"></i>加入購物車</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 <%
         if(rowCount==rowLimit){
-          out.print("</div>");
+          //out.print("</div>");
           rowCount=0;
         }
         rowCount++;

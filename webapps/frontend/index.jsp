@@ -17,6 +17,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
     <!-- load custom css -->
     <link rel="stylesheet" type="text/css" href="./css/custom.css">
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- bootstrap JavaScript plugin -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <!-- Semantic UI -->
+    <link rel="stylesheet" type="text/css" href="./plugins/semantic-ui/semantic.min.css">
+    <script type="text/javascript" src="./plugins/semantic-ui/semantic.min.js"></script>
+    <!-- Sweetalert -->
+    <script src="./plugins/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="plugins/sweetalert/dist/sweetalert.css">
 </head>
 
 <body style="background-image:url(./images/bg.jpg)">
@@ -64,27 +74,28 @@
     <!-- End of Header Carousel -->
     <!-- Products -->
     <div class="container">
+        <div style="margin-top: 100px;"></div>
+
+    <div class="ui three stackable special cards">
         <jsp:include page="./layouts/products.jsp"/>
 
+    </div>
     </div>
 
     <footer>
     </footer>
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- bootstrap JavaScript plugin -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <!-- Semantic UI -->
-    <link rel="stylesheet" type="text/css" href="./plugins/semantic-ui/semantic.min.css">
-    <script type="text/javascript" src="./plugins/semantic-ui/semantic.min.js"></script>
-    <!-- Sweetalert -->
-    <script src="./plugins/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="plugins/sweetalert/dist/sweetalert.css">
+
     <!-- Script to Activate the Carousel -->
     <script>
+    //For cards to dim
+    $('.special.cards .image').dimmer({
+    on: 'hover'
+    });
+    //For carousel to swap
     $('.carousel').carousel({
         interval: 5000 //changes the speed
-    })
+    });
+    //For option
     $('.ui.dropdown')
         .dropdown()
     ;
